@@ -98,34 +98,5 @@ int Prompt(const std::string_view prompt, int def) {
                 std::numeric_limits<int>::max(), def);
 }
 
-#if 0
-template <class T>
-const T& Prompt(const std::string_view prompt, const std::string_view desc,
-                const PromptOptList<T>& options, int def) {
-  if (options.empty()) {
-    throw std::logic_error("empty option list");
-  }
-
-  if (def >= options.size() || def < 0) {
-    throw std::out_of_range("default index out of range");
-  }
-
-  std::cout << desc << '\n';
-
-  for (int i = 0; const auto& opt : options) {
-    std::cout << i++ << ") " << opt.name << '\n';
-  }
-
-  int choice = Prompt(prompt, 0, (int)options.size() - 1, def);
-
-  return options[choice].value;
-}
-
-template <> struct PromptOpt<std::string_view>;
-template <> const std::string_view& Prompt<std::string_view>(
-    const std::string_view, const std::string_view,
-    const PromptOptList<std::string_view>&, int);
-#endif
-
 }  // namespace cli
 }  // namespace cfconfig
