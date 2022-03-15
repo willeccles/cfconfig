@@ -1,5 +1,9 @@
 list(APPEND CFCONFIG_SOURCES
-  ${CMAKE_CURRENT_LIST_DIR}/main.cpp)
+  ${CMAKE_CURRENT_LIST_DIR}/cli.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/config.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/main.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/util.cpp
+  )
 
 add_executable(cfconfig ${CFCONFIG_SOURCES})
 

@@ -1,25 +1,17 @@
-#include <clang/Format/Format.h>
-
+#include <iomanip>
 #include <iostream>
+#include <optional>
+#include <string_view>
 
-namespace cf = clang::format;
+#include "cli.h"
+#include "config.h"
 
 int main(int argc, char** argv) {
-  if (argc != 2) {
-    std::cerr << "missing style\n";
-    return 1;
-  }
+  // quick mock-up (this should not be permanently here, but this is a rough
+  // idea of how this should look)
+  auto style = cfconfig::config::GetBaseConfig();
 
-  cf::FormatStyle style{};
-
-  if (cf::getPredefinedStyle(argv[1], cf::FormatStyle::LanguageKind::LK_Cpp,
-                             &style)) {
-    std::cout << cf::configurationAsText(style) << '\n';
-    return 0;
-  } else {
-    std::cerr << "unknown style: " << argv[1] << '\n';
-    return 1;
-  }
+  cfconfig::config::PromptStyle(style);
 
   return 0;
 }
