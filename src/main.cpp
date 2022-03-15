@@ -12,9 +12,8 @@ int main(int argc, char** argv) {
 
   cf::FormatStyle style{};
 
-
   if (cf::getPredefinedStyle(argv[1], cf::FormatStyle::LanguageKind::LK_Cpp,
-                                        &style)) {
+                             &style)) {
     std::cout << cf::configurationAsText(style) << '\n';
     return 0;
   } else {
